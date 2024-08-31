@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package realibox.hub.common;
+package eden.common;
 
-option go_package = "github.com/sinsay/protoc-gen-go-sql-fx/proto;proto";
+option go_package = "github.com/eden-quan/protoc-gen-go-sql-fx/proto;proto";
 
 
 import "google/protobuf/descriptor.proto";

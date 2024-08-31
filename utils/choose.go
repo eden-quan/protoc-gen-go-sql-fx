@@ -3,7 +3,7 @@ package utils
 import (
 	"fmt"
 
-	def "github.com/sinsay/protoc-gen-go-sql-fx/proto"
+	def "github.com/eden-quan/protoc-gen-go-sql-fx/proto"
 )
 
 func ChooseAssignArgs(arg *def.DataBinding) string {

@@ -265,7 +265,7 @@ type DataMapping struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Type       QueryTypeEnum_QueryType `protobuf:"varint,1,opt,name=type,proto3,enum=realibox.hub.common.QueryTypeEnum_QueryType" json:"type,omitempty"`
+	Type       QueryTypeEnum_QueryType `protobuf:"varint,1,opt,name=type,proto3,enum=eden.common.QueryTypeEnum_QueryType" json:"type,omitempty"`
 	InjectName string                  `protobuf:"bytes,2,opt,name=inject_name,json=injectName,proto3" json:"inject_name,omitempty"` // inject_name 为插入自定义逻辑的位置
 	Query      string                  `protobuf:"bytes,3,opt,name=query,proto3" json:"query,omitempty"`                             // 用于查询数据库的语句
 	Args       []*DataBinding          `protobuf:"bytes,4,rep,name=args,proto3" json:"args,omitempty"`                               // 参数的绑定配置
@@ -753,7 +753,7 @@ type BindDefine struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Bind BindEnum_Bind `protobuf:"varint,1,opt,name=bind,proto3,enum=realibox.hub.common.BindEnum_Bind" json:"bind,omitempty"`
+	Bind BindEnum_Bind `protobuf:"varint,1,opt,name=bind,proto3,enum=eden.common.BindEnum_Bind" json:"bind,omitempty"`
 }
 
 func (x *BindDefine) Reset() {
@@ -838,7 +838,7 @@ var file_proto_common_query_proto_extTypes = []protoimpl.ExtensionInfo{
 		ExtendedType:  (*descriptorpb.MethodOptions)(nil),
 		ExtensionType: (*DataQuery)(nil),
 		Field:         1424,
-		Name:          "realibox.hub.common.crud",
+		Name:          "eden.common.crud",
 		Tag:           "bytes,1424,opt,name=crud",
 		Filename:      "proto/common.query.proto",
 	},
@@ -846,7 +846,7 @@ var file_proto_common_query_proto_extTypes = []protoimpl.ExtensionInfo{
 		ExtendedType:  (*descriptorpb.MethodOptions)(nil),
 		ExtensionType: (*QueryChain)(nil),
 		Field:         1425,
-		Name:          "realibox.hub.common.chain",
+		Name:          "eden.common.chain",
 		Tag:           "bytes,1425,opt,name=chain",
 		Filename:      "proto/common.query.proto",
 	},
@@ -854,7 +854,7 @@ var file_proto_common_query_proto_extTypes = []protoimpl.ExtensionInfo{
 		ExtendedType:  (*descriptorpb.MessageOptions)(nil),
 		ExtensionType: (*TableDefine)(nil),
 		Field:         1415,
-		Name:          "realibox.hub.common.table",
+		Name:          "eden.common.table",
 		Tag:           "bytes,1415,opt,name=table",
 		Filename:      "proto/common.query.proto",
 	},
@@ -862,7 +862,7 @@ var file_proto_common_query_proto_extTypes = []protoimpl.ExtensionInfo{
 		ExtendedType:  (*descriptorpb.MethodOptions)(nil),
 		ExtensionType: (*TableFindDefine)(nil),
 		Field:         1416,
-		Name:          "realibox.hub.common.find",
+		Name:          "eden.common.find",
 		Tag:           "bytes,1416,opt,name=find",
 		Filename:      "proto/common.query.proto",
 	},
@@ -870,8 +870,8 @@ var file_proto_common_query_proto_extTypes = []protoimpl.ExtensionInfo{
 		ExtendedType:  (*descriptorpb.MethodOptions)(nil),
 		ExtensionType: (*BindEnum_Bind)(nil),
 		Field:         1417,
-		Name:          "realibox.hub.common.bind",
-		Tag:           "varint,1417,opt,name=bind,enum=realibox.hub.common.BindEnum_Bind",
+		Name:          "eden.common.bind",
+		Tag:           "varint,1417,opt,name=bind,enum=eden.common.BindEnum_Bind",
 		Filename:      "proto/common.query.proto",
 	},
 }
@@ -880,21 +880,21 @@ var file_proto_common_query_proto_extTypes = []protoimpl.ExtensionInfo{
 var (
 	// crud 用来表示一个单独的 SQL 语句
 	//
-	// optional realibox.hub.common.DataQuery crud = 1424;
+	// optional eden.common.DataQuery crud = 1424;
 	E_Crud = &file_proto_common_query_proto_extTypes[0]
 	// chain 用来表示一系列 SQL 逻辑，期间可插入自定义函数处理逻辑及各种自定义语句，在 Chain 中的代码将使用同一个事务
 	//
-	// optional realibox.hub.common.QueryChain chain = 1425;
+	// optional eden.common.QueryChain chain = 1425;
 	E_Chain = &file_proto_common_query_proto_extTypes[1]
-	// optional realibox.hub.common.TableFindDefine find = 1416;
+	// optional eden.common.TableFindDefine find = 1416;
 	E_Find = &file_proto_common_query_proto_extTypes[3]
-	// optional realibox.hub.common.BindEnum.Bind bind = 1417;
+	// optional eden.common.BindEnum.Bind bind = 1417;
 	E_Bind = &file_proto_common_query_proto_extTypes[4]
 )
 
 // Extension fields to descriptorpb.MessageOptions.
 var (
-	// optional realibox.hub.common.TableDefine table = 1415;
+	// optional eden.common.TableDefine table = 1415;
 	E_Table = &file_proto_common_query_proto_extTypes[2]
 )
 
@@ -1042,43 +1042,43 @@ func file_proto_common_query_proto_rawDescGZIP() []byte {
 var file_proto_common_query_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_proto_common_query_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_proto_common_query_proto_goTypes = []interface{}{
-	(QueryTypeEnum_QueryType)(0),        // 0: realibox.hub.common.QueryTypeEnum.QueryType
-	(BindEnum_Bind)(0),                  // 1: realibox.hub.common.BindEnum.Bind
-	(*QueryTypeEnum)(nil),               // 2: realibox.hub.common.QueryTypeEnum
-	(*DataQuery)(nil),                   // 3: realibox.hub.common.DataQuery
-	(*QueryChain)(nil),                  // 4: realibox.hub.common.QueryChain
-	(*DataMapping)(nil),                 // 5: realibox.hub.common.DataMapping
-	(*DataBinding)(nil),                 // 6: realibox.hub.common.DataBinding
-	(*TableDefine)(nil),                 // 7: realibox.hub.common.TableDefine
-	(*TableFindDefine)(nil),             // 8: realibox.hub.common.TableFindDefine
-	(*TableFindPagingDefine)(nil),       // 9: realibox.hub.common.TableFindPagingDefine
-	(*IndexDefine)(nil),                 // 10: realibox.hub.common.IndexDefine
-	(*BindDefine)(nil),                  // 11: realibox.hub.common.BindDefine
-	(*BindEnum)(nil),                    // 12: realibox.hub.common.BindEnum
-	nil,                                 // 13: realibox.hub.common.TableFindDefine.WhereEntry
+	(QueryTypeEnum_QueryType)(0),        // 0: eden.common.QueryTypeEnum.QueryType
+	(BindEnum_Bind)(0),                  // 1: eden.common.BindEnum.Bind
+	(*QueryTypeEnum)(nil),               // 2: eden.common.QueryTypeEnum
+	(*DataQuery)(nil),                   // 3: eden.common.DataQuery
+	(*QueryChain)(nil),                  // 4: eden.common.QueryChain
+	(*DataMapping)(nil),                 // 5: eden.common.DataMapping
+	(*DataBinding)(nil),                 // 6: eden.common.DataBinding
+	(*TableDefine)(nil),                 // 7: eden.common.TableDefine
+	(*TableFindDefine)(nil),             // 8: eden.common.TableFindDefine
+	(*TableFindPagingDefine)(nil),       // 9: eden.common.TableFindPagingDefine
+	(*IndexDefine)(nil),                 // 10: eden.common.IndexDefine
+	(*BindDefine)(nil),                  // 11: eden.common.BindDefine
+	(*BindEnum)(nil),                    // 12: eden.common.BindEnum
+	nil,                                 // 13: eden.common.TableFindDefine.WhereEntry
 	(*descriptorpb.MethodOptions)(nil),  // 14: google.protobuf.MethodOptions
 	(*descriptorpb.MessageOptions)(nil), // 15: google.protobuf.MessageOptions
 }
 var file_proto_common_query_proto_depIdxs = []int32{
-	5,  // 0: realibox.hub.common.DataQuery.query:type_name -> realibox.hub.common.DataMapping
-	5,  // 1: realibox.hub.common.QueryChain.query:type_name -> realibox.hub.common.DataMapping
-	0,  // 2: realibox.hub.common.DataMapping.type:type_name -> realibox.hub.common.QueryTypeEnum.QueryType
-	6,  // 3: realibox.hub.common.DataMapping.args:type_name -> realibox.hub.common.DataBinding
-	6,  // 4: realibox.hub.common.DataMapping.resp:type_name -> realibox.hub.common.DataBinding
-	10, // 5: realibox.hub.common.TableDefine.index:type_name -> realibox.hub.common.IndexDefine
-	13, // 6: realibox.hub.common.TableFindDefine.where:type_name -> realibox.hub.common.TableFindDefine.WhereEntry
-	9,  // 7: realibox.hub.common.TableFindDefine.page:type_name -> realibox.hub.common.TableFindPagingDefine
-	1,  // 8: realibox.hub.common.BindDefine.bind:type_name -> realibox.hub.common.BindEnum.Bind
-	14, // 9: realibox.hub.common.crud:extendee -> google.protobuf.MethodOptions
-	14, // 10: realibox.hub.common.chain:extendee -> google.protobuf.MethodOptions
-	15, // 11: realibox.hub.common.table:extendee -> google.protobuf.MessageOptions
-	14, // 12: realibox.hub.common.find:extendee -> google.protobuf.MethodOptions
-	14, // 13: realibox.hub.common.bind:extendee -> google.protobuf.MethodOptions
-	3,  // 14: realibox.hub.common.crud:type_name -> realibox.hub.common.DataQuery
-	4,  // 15: realibox.hub.common.chain:type_name -> realibox.hub.common.QueryChain
-	7,  // 16: realibox.hub.common.table:type_name -> realibox.hub.common.TableDefine
-	8,  // 17: realibox.hub.common.find:type_name -> realibox.hub.common.TableFindDefine
-	1,  // 18: realibox.hub.common.bind:type_name -> realibox.hub.common.BindEnum.Bind
+	5,  // 0: eden.common.DataQuery.query:type_name -> eden.common.DataMapping
+	5,  // 1: eden.common.QueryChain.query:type_name -> eden.common.DataMapping
+	0,  // 2: eden.common.DataMapping.type:type_name -> eden.common.QueryTypeEnum.QueryType
+	6,  // 3: eden.common.DataMapping.args:type_name -> eden.common.DataBinding
+	6,  // 4: eden.common.DataMapping.resp:type_name -> eden.common.DataBinding
+	10, // 5: eden.common.TableDefine.index:type_name -> eden.common.IndexDefine
+	13, // 6: eden.common.TableFindDefine.where:type_name -> eden.common.TableFindDefine.WhereEntry
+	9,  // 7: eden.common.TableFindDefine.page:type_name -> eden.common.TableFindPagingDefine
+	1,  // 8: eden.common.BindDefine.bind:type_name -> eden.common.BindEnum.Bind
+	14, // 9: eden.common.crud:extendee -> google.protobuf.MethodOptions
+	14, // 10: eden.common.chain:extendee -> google.protobuf.MethodOptions
+	15, // 11: eden.common.table:extendee -> google.protobuf.MessageOptions
+	14, // 12: eden.common.find:extendee -> google.protobuf.MethodOptions
+	14, // 13: eden.common.bind:extendee -> google.protobuf.MethodOptions
+	3,  // 14: eden.common.crud:type_name -> eden.common.DataQuery
+	4,  // 15: eden.common.chain:type_name -> eden.common.QueryChain
+	7,  // 16: eden.common.table:type_name -> eden.common.TableDefine
+	8,  // 17: eden.common.find:type_name -> eden.common.TableFindDefine
+	1,  // 18: eden.common.bind:type_name -> eden.common.BindEnum.Bind
 	19, // [19:19] is the sub-list for method output_type
 	19, // [19:19] is the sub-list for method input_type
 	14, // [14:19] is the sub-list for extension type_name

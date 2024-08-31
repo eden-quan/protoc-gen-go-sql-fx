@@ -9,8 +9,8 @@ import (
 
 	"google.golang.org/protobuf/compiler/protogen"
 
-	"github.com/sinsay/protoc-gen-go-sql-fx/proto"
-	"github.com/sinsay/protoc-gen-go-sql-fx/utils"
+	"github.com/eden-quan/protoc-gen-go-sql-fx/proto"
+	"github.com/eden-quan/protoc-gen-go-sql-fx/utils"
 )
 
 //go:embed template/actionDefTemplate.tpl

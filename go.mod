@@ -1,4 +1,4 @@
-module github.com/sinsay/protoc-gen-go-sql-fx
+module github.com/eden-quan/protoc-gen-go-sql-fx
 
 go 1.21.6
 

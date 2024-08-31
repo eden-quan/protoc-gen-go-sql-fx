@@ -128,7 +128,7 @@ var file_proto_common_resource_proto_extTypes = []protoimpl.ExtensionInfo{
 		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
 		ExtensionType: (*FlattenRules)(nil),
 		Field:         1423,
-		Name:          "realibox.hub.common.flatten_rule",
+		Name:          "eden.common.flatten_rule",
 		Tag:           "bytes,1423,opt,name=flatten_rule",
 		Filename:      "proto/common.resource.proto",
 	},
@@ -136,7 +136,7 @@ var file_proto_common_resource_proto_extTypes = []protoimpl.ExtensionInfo{
 		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
 		ExtensionType: (*bool)(nil),
 		Field:         1424,
-		Name:          "realibox.hub.common.flatten",
+		Name:          "eden.common.flatten",
 		Tag:           "varint,1424,opt,name=flatten",
 		Filename:      "proto/common.resource.proto",
 	},
@@ -144,7 +144,7 @@ var file_proto_common_resource_proto_extTypes = []protoimpl.ExtensionInfo{
 
 // Extension fields to descriptorpb.FieldOptions.
 var (
-	// optional realibox.hub.common.FlattenRules flatten_rule = 1423;
+	// optional eden.common.FlattenRules flatten_rule = 1423;
 	E_FlattenRule = &file_proto_common_resource_proto_extTypes[0]
 	// optional bool flatten = 1424;
 	E_Flatten = &file_proto_common_resource_proto_extTypes[1]
@@ -201,15 +201,15 @@ func file_proto_common_resource_proto_rawDescGZIP() []byte {
 
 var file_proto_common_resource_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_proto_common_resource_proto_goTypes = []interface{}{
-	(*FlattenRules)(nil),              // 0: realibox.hub.common.FlattenRules
-	(*Reserved)(nil),                  // 1: realibox.hub.common.Reserved
+	(*FlattenRules)(nil),              // 0: eden.common.FlattenRules
+	(*Reserved)(nil),                  // 1: eden.common.Reserved
 	(*descriptorpb.FieldOptions)(nil), // 2: google.protobuf.FieldOptions
 }
 var file_proto_common_resource_proto_depIdxs = []int32{
-	1, // 0: realibox.hub.common.FlattenRules.reserved:type_name -> realibox.hub.common.Reserved
-	2, // 1: realibox.hub.common.flatten_rule:extendee -> google.protobuf.FieldOptions
-	2, // 2: realibox.hub.common.flatten:extendee -> google.protobuf.FieldOptions
-	0, // 3: realibox.hub.common.flatten_rule:type_name -> realibox.hub.common.FlattenRules
+	1, // 0: eden.common.FlattenRules.reserved:type_name -> eden.common.Reserved
+	2, // 1: eden.common.flatten_rule:extendee -> google.protobuf.FieldOptions
+	2, // 2: eden.common.flatten:extendee -> google.protobuf.FieldOptions
+	0, // 3: eden.common.flatten_rule:type_name -> eden.common.FlattenRules
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	3, // [3:4] is the sub-list for extension type_name
