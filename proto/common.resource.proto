@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package realibox.hub.common;
+
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/sinsay/permission-service/api/common/v3/resources;proto";
+
+
+// Flatten 扩展，用于支持自动将通用类型平铺到返回结果中，如可将 Result 平铺到其他业务返回结果，
+// 保证所有返回结构都具有统一的状态码结构
+extend google.protobuf.FieldOptions {
+  optional FlattenRules flatten_rule = 1423;
+  optional bool flatten = 1424;
+}
+
+message FlattenRules {
+  optional Reserved reserved = 1;
+}
+
+message Reserved {
+  optional int32 min = 1;
+  optional int32 max = 2;
+}

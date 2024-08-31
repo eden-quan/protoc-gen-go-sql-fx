@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package realibox.hub.common;
+
+option go_package = "github.com/sinsay/protoc-gen-go-sql-fx/proto;proto";
+
+
+import "google/protobuf/descriptor.proto";
+
+message QueryTypeEnum {
+  enum QueryType {
+    QUERY_UNSPECIFIED = 0;
+    Select = 1;
+    Update = 2;
+    Delete = 3;
+    Insert = 4;
+    Inject = 5; // 自定义逻辑
+    SelectOne = 6; // 只查找一个元素
+  }
+}
+
+extend google.protobuf.MethodOptions {
+  // crud 用来表示一个单独的 SQL 语句
+  DataQuery crud = 1424;
+
+  // chain 用来表示一系列 SQL 逻辑，期间可插入自定义函数处理逻辑及各种自定义语句，在 Chain 中的代码将使用同一个事务
+  QueryChain chain = 1425;
+}
+
+message DataQuery {
+  DataMapping query = 1;
+}
+
+message QueryChain {
+  repeated DataMapping query = 1426;
+}
+
+message DataMapping {
+  QueryTypeEnum.QueryType type = 1;
+  string inject_name = 2; // inject_name 为插入自定义逻辑的位置
+  string query = 3; // 用于查询数据库的语句
+  repeated DataBinding args = 4; // 参数的绑定配置
+  repeated DataBinding resp = 5; // 返回值的绑定配置
+}
+
+message DataBinding {
+  string name = 1;          // name 用于绑定参数映射，一般与 patten_from 组合，将参数信息与 SQL 变量建立绑定
+  oneof patten_from {
+    string from_arg = 2;      // from_arg 用于绑定参数路径，可支持字段名及路径，如参数或返回值处于较深路径时可使用 aa.bb.cc, * 表示使用整个 arg 作为参数
+    string from_resp = 3;     // from_resp 用于绑定参数路径，同 from_arg, 只是获取数据的来源为 resp
+    string from_context = 4;  // from_context 表示上下文中的信息，上下文为本次调用 context 中的 value 信息, 该字段为存放上下文数据的 KeY
+    string from_query = 5;    // from_query 表示目标数据来自当前的数据库查询结果
+  }
+  oneof patten_to {
+    string to_arg = 7;        // to_arg 用于绑定返回值路径, 说明需要将本次执行结果写入 args
+    string to_resp = 8;       // to_resp 用于绑定返回值路径，说明需要将本次执行结果写入 resp
+    string to_context = 9;    // to_context 用于绑定返回值路径，说明需要将本次执行结果写入 context, WARN: 暂不支持 - 需要找到一个支持类型推导的方式
+  }
+  string type = 10;           // type 一般用在 to_context 相关的操作，用于将查询的数据按照指定的类型保存到 context 中
+}
+
+message TableDefine {
+  string name = 1;
+  repeated IndexDefine index = 1416;
+
+}
+
+message TableFindDefine {
+  map<string, string> where = 1;
+  TableFindPagingDefine page = 2;
+  string query = 3;
+}
+
+message TableFindPagingDefine {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message IndexDefine {
+  repeated string keys = 1;
+  string name = 2;
+}
+
+extend google.protobuf.MessageOptions {
+  TableDefine table = 1415;
+}
+
+extend google.protobuf.MethodOptions {
+  TableFindDefine find = 1416;
+  BindEnum.Bind bind = 1417;
+}
+
+message BindDefine {
+  BindEnum.Bind bind = 1;
+}
+
+message BindEnum {
+  enum Bind {
+    None = 0;
+    BindResp = 1;
+  }
+}
+
