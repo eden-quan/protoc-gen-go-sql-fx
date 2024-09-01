@@ -66,9 +66,11 @@ func generateFileContent(gen *protogen.Plugin, file *protogen.File, g *protogen.
 	for _, service := range file.Services {
 		genService(gen, file, g, service, omitempty, omitemptyPrefix)
 	}
+
 }
 
-func genService(p *protogen.Plugin, file *protogen.File, g *protogen.GeneratedFile, service *protogen.Service, omitempty bool, omitemptyPrefix string) {
+func genService(p *protogen.Plugin, file *protogen.File, g *protogen.GeneratedFile, service *protogen.Service, omitempty bool,
+	omitemptyPrefix string) {
 	if service.Desc.Options().(*descriptorpb.ServiceOptions).GetDeprecated() {
 		g.P("//")
 		g.P(utils.DeprecationComment)
@@ -82,12 +84,19 @@ func genService(p *protogen.Plugin, file *protogen.File, g *protogen.GeneratedFi
 		MetaData:         file.Desc.Path(),
 	}
 
+	hasSQL := false
+
 	for _, method := range service.Methods {
 		if method.Desc.IsStreamingClient() || method.Desc.IsStreamingServer() {
 			continue
 		}
 		crud, _ := proto.GetExtension(method.Desc.Options(), def.E_Crud).(*def.DataQuery)
 		chain, _ := proto.GetExtension(method.Desc.Options(), def.E_Chain).(*def.QueryChain)
+
+		if !hasSQL {
+			hasSQL = crud != nil || chain != nil
+		}
+
 		comment := method.Comments.Leading.String() + method.Comments.Trailing.String()
 		if comment != "" {
 			comment = "// " + method.GoName + strings.TrimPrefix(strings.TrimSuffix(comment, "\n"), "//")
@@ -116,6 +125,10 @@ func genService(p *protogen.Plugin, file *protogen.File, g *protogen.GeneratedFi
 
 	if len(sd.Methods) != 0 {
 		g.P(sd.Execute())
+	}
+
+	if !hasSQL {
+		g.Skip()
 	}
 }
 
