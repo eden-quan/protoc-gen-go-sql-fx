@@ -30,7 +30,7 @@
 type {{ $UpperName }}InjectArg struct {
     Args *{{ $Method.Args }}
     Resp *{{ $Method.Resp }}
-    Tx go_biz_kit.Transaction
+    Tx go_biz_kit_git.Transaction
 }
 
 type {{ $UpperName }}InjectInterface = func(ctx context.Context, arg *{{ $UpperName}}InjectArg) (context.Context, error)
@@ -57,15 +57,15 @@ func Register{{ $UpperName }}InjectMethod{{ camel $action.InjectName }}(inj {{ $
 type {{ $Name }}Interface interface {
 	SQL(ctx context.Context) (context.Context, string)
 	Args(ctx context.Context, args *{{ $Method.Args }}, resp *{{ $Method.Resp }}) (context.Context, interface{}, error)
-	Dest(ctx context.Context, args *{{ $Method.Args }}, resp *{{ $Method.Resp }}, tx go_biz_kit.Transaction) (context.Context, error)
+	Dest(ctx context.Context, args *{{ $Method.Args }}, resp *{{ $Method.Resp }}, tx go_biz_kit_git.Transaction) (context.Context, error)
 }
 
 type {{ $Name }} struct {
-    db go_biz_kit.Database
+    db go_biz_kit_git.Database
     actions []{{ $Method.ActionName -1 }}Interface
 }
 
-func new{{ $UpperName }}(db go_biz_kit.Database) *{{ $Name }} {
+func new{{ $UpperName }}(db go_biz_kit_git.Database) *{{ $Name }} {
     return &{{ $Name }} {
         db: db,
         actions: []{{ $Name }}Interface {
@@ -110,7 +110,7 @@ func (a *{{ $Name }}) executeQuery(ctx context.Context, args *{{ $Method.Args }}
 
 {{ range $index, $action := $Method.Queries }}
     type {{ $Method.ActionName $index}} struct {
-        db go_biz_kit.Database
+        db go_biz_kit_git.Database
     }
 
     func (a *{{ $Method.ActionName $index }}) SQL(ctx context.Context) (context.Context, string) {
@@ -144,7 +144,7 @@ func (a *{{ $Name }}) executeQuery(ctx context.Context, args *{{ $Method.Args }}
         return ctx, &anno, nil
     }
 
-    func (a *{{ $Method.ActionName $index }}) Dest(ctx context.Context, _args *{{ $Method.Args }}, _resp *{{ $Method.Resp }}, tx go_biz_kit.Transaction) (context.Context, error) {
+    func (a *{{ $Method.ActionName $index }}) Dest(ctx context.Context, _args *{{ $Method.Args }}, _resp *{{ $Method.Resp }}, tx go_biz_kit_git.Transaction) (context.Context, error) {
         var err error = nil
 
         {{ if $action.IsEmptyAction }}

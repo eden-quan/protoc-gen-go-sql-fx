@@ -6,8 +6,8 @@ import (
 
 	"google.golang.org/protobuf/reflect/protoreflect"
 
-	def "gitlab.lainuoniao.cn/eden-quan/protoc-gen-go-sql-fx/proto"
-	"gitlab.lainuoniao.cn/eden-quan/protoc-gen-go-sql-fx/utils"
+	def "gitlab.lainuoniao.cn/rhinobird/backend/protoc-gen-go-sql-fx.git/proto"
+	"gitlab.lainuoniao.cn/rhinobird/backend/protoc-gen-go-sql-fx.git/utils"
 
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/proto"
@@ -20,8 +20,8 @@ const (
 	fxPackage            = protogen.GoImportPath("go.uber.org/fx")
 	transportHTTPPackage = protogen.GoImportPath("github.com/go-kratos/kratos/v2/transport/http")
 	bindingPackage       = protogen.GoImportPath("github.com/go-kratos/kratos/v2/transport/http/binding")
-	businessPackage      = protogen.GoImportPath("gitlab.lainuoniao.cn/eden-quan/go-biz-kit")
-	businessErrorPackage = protogen.GoImportPath("gitlab.lainuoniao.cn/eden-quan/go-biz-kit/error")
+	businessPackage      = protogen.GoImportPath("gitlab.lainuoniao.cn/rhinobird/backend/go-biz-kit.git")
+	businessErrorPackage = protogen.GoImportPath("gitlab.lainuoniao.cn/rhinobird/backend/go-biz-kit.git/error")
 )
 
 // generateFile generates a _http.pb.go file containing kratos errors definitions.

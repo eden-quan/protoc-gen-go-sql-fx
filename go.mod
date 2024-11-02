@@ -1,4 +1,4 @@
-module gitlab.lainuoniao.cn/eden-quan/protoc-gen-go-sql-fx
+module gitlab.lainuoniao.cn/rhinobird/backend/protoc-gen-go-sql-fx.git
 
 go 1.21.6
 

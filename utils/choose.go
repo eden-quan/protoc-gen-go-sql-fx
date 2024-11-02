@@ -3,7 +3,7 @@ package utils
 import (
 	"fmt"
 
-	def "gitlab.lainuoniao.cn/eden-quan/protoc-gen-go-sql-fx/proto"
+	def "gitlab.lainuoniao.cn/rhinobird/backend/protoc-gen-go-sql-fx.git/proto"
 )
 
 func ChooseAssignArgs(arg *def.DataBinding) string {

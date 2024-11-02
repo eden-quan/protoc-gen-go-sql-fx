@@ -5,8 +5,8 @@ import (
 
 	"google.golang.org/protobuf/compiler/protogen"
 
-	"gitlab.lainuoniao.cn/eden-quan/protoc-gen-go-sql-fx/proto"
-	"gitlab.lainuoniao.cn/eden-quan/protoc-gen-go-sql-fx/utils"
+	"gitlab.lainuoniao.cn/rhinobird/backend/protoc-gen-go-sql-fx.git/proto"
+	"gitlab.lainuoniao.cn/rhinobird/backend/protoc-gen-go-sql-fx.git/utils"
 )
 
 type Query struct {

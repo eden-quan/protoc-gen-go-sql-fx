@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package eden.common;
 
-option go_package = "gitlab.lainuoniao.cn/eden-quan/protoc-gen-go-sql-fx/proto;proto";
+option go_package = "gitlab.lainuoniao.cn/rhinobird/backend/protoc-gen-go-sql-fx.git/proto;proto";
 
 
 import "google/protobuf/descriptor.proto";
